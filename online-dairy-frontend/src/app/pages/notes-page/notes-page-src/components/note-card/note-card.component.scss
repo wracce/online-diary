@@ -1,0 +1,15 @@
+.dropdown-arrow_disable::after{
+  display: none;
+}
+
+
+.note-card{
+  padding: 0;
+  border: none;
+  // width: 200px;
+  background: none;
+}
+
+::ng-deep img{
+  max-width: 100%;
+}

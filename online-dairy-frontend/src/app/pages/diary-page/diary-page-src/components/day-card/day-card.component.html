@@ -1,0 +1,27 @@
+<div class="card">
+  <div
+    class="card-header d-flex justify-content-between w-100 align-items-center"
+  >
+    <span class="display-2 text-danger">{{ day.date | date: "EEE": undefined : "ru" | uppercase }}</span>
+    <span class="display-6 text-end">{{ day.date | date: "d MMMM yyyy": undefined : "ru"}}</span>
+  </div>
+  <div class="card-body px-0 py-1">
+    <app-day-record
+      *ngFor="
+        let rec of diaryPageService.currentDay.dayRecords | preRecords;
+        index as i
+      "
+      [idRow] = "i + 1"
+      [dayRecord] = rec
+      [day] = day
+      [disabled] = "i > day.dayRecords?.length!"
+    ></app-day-record>
+  </div>
+  <form class="card-footer bg-white visually-hidden" [formGroup]="form">
+    <textarea
+      class="fs-4 content form-control shadow-none"
+      placeholder=". . . . . . ."
+      formControlName="note"
+    ></textarea>
+  </form>
+</div>

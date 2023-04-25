@@ -1,0 +1,38 @@
+<button class="note-card w-100" (click)="notesPageService.openNoteCardModal(id)">
+  <div class="card text-start" >
+    <div class="card-body rounded-top-2 p-1"[style]="'background-color: ' + color!.value" >
+      <h5 class="card-title">{{ header }}</h5>
+      <p class="card-text"><ng-content></ng-content></p>
+    </div>
+    <div class="card-footer text-muted clearfix text-start p-1">
+      <span class="">{{ created | date : "dd.MM.yyyy" }}</span>
+      <div ngbDropdown placement="top-end" class="d-inline-block float-end">
+        <button
+          class="btn btn-light dropdown-arrow_disable"
+          type="button"
+          id="dropdownCardTools"
+          ngbDropdownToggle
+          appClickStopPropagation
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownCardTools">
+          <button ngbDropdownItem appClickStopPropagation (click)="notesPageService.markNote(id)">
+            <i
+            class="text-warning bi"
+            [class]="marked?'bi-star':'bi-star-fill'"></i>
+            <span> {{!marked?" Закрепить":" Открепить"}}</span>
+          </button>
+          <button
+            ngbDropdownItem
+            appClickStopPropagation
+            (click)="notesPageService.deleteNote(id)"
+          >
+            <i class="bi bi-trash text-danger"></i>
+            <span class="text-danger"> Удалить</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</button>

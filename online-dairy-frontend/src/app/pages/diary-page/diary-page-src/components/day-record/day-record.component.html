@@ -1,0 +1,45 @@
+<form
+  class="d-flex align-items-end justify-content-between position-relative border-end border-3 border-opacity-100"
+  [formGroup]="form"
+  [class.bg-success-subtle]="done"
+  [class.border-warning]="isEdit()"
+>
+  <label class="rec-label form-label display-5 m-0 text-danger ms-1 text-end">{{ idRow }}.</label>
+  <select
+    class="tag form-select mx-2 border-0 border-bottom border-2 rounded-0 border-danger-subtle shadow-none fw-bold p-0"
+    [class.bg-success-subtle]="done"
+    formControlName="tag"
+    [disableControl]="disabled"
+    (ngModelChange)="applyChange()"
+  >
+    <option
+      *ngFor="let tag of diaryPageService.tags; let i = index"
+      [value]="tag.name"
+    >
+      {{ tag.name + " - " + tag.desc }}
+    </option>
+  </select>
+  <textarea
+    #content
+    type="text"
+    class="content form-control form-control-sm shadow-none border-0 border-bottom border-2 border-danger-subtle rounded-0 py-0"
+    placeholder=""
+    formControlName="content"
+    (keydown)="triggerFunction($event)"
+    [class.text-decoration-line-through]="done"
+    [class.bg-success-subtle]="done"
+    [disableControl]="disabled"
+  ></textarea>
+  <button
+    type="checkbox"
+    class="btn rounded-circle shadow-none p-0 px-1 border-0 ms-1 fs-5 me-1"
+    [class]="!done ? 'btn-outline-secondary' : 'btn-outline-success'"
+    (click)="done = !done; applyChange()"
+    [disabled]="disabled"
+  >
+    <i class="bi bi-check-lg fw-bold"></i>
+  </button>
+  <!-- <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+    <span class="visually-hidden">New alerts</span>
+  </span> -->
+</form>

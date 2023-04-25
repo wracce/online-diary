@@ -1,0 +1,43 @@
+
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+.tag {
+  // flex-basis: 10%;
+  width: 20px;
+}
+
+
+.rec-label {
+  min-width: 44px;
+}
+@include media-breakpoint-up(sm) {
+  .rec-label {
+    min-width: 50px;
+  }
+}
+@include media-breakpoint-up(md) {
+  .rec-label {
+    min-width: 55px;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .rec-label {
+    min-width: 60px;
+  }
+}
+
+.contentWrapper {
+}
+
+.content {
+  overflow: hidden;
+  resize: none;
+  white-space: normal;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+select {
+  --bs-form-select-bg-img: none;
+}

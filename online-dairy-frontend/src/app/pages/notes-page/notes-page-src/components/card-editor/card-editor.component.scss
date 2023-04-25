@@ -1,0 +1,34 @@
+//@import 'node_modules/bootstrap/scss/bootstrap.scss';
+.editor-wrapper {
+  border: unset !important;
+}
+
+.editor-menu {
+  border: unset !important;
+}
+
+
+:host ::ng-deep {
+  .NgxEditor {
+    border: unset;
+  }
+
+
+/*  * button{
+    @extend .btn;
+    @extend .btn-sm;
+  }*/
+}
+
+::ng-deep {
+  /* to penetrate <ngx-editor> CSS styling */
+
+  .NgxEditor {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .NgxEditor__Content {
+    max-height: 50vh; /* make all of the editor area clickable */
+  }
+}

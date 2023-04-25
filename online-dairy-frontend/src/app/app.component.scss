@@ -1,0 +1,10 @@
+.containerWrapper{
+  max-height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.contentWrapper{
+  height: 100%;
+  overflow-y: auto;
+}

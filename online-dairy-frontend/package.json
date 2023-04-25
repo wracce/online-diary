@@ -22,7 +22,9 @@
     "@popperjs/core": "^2.11.7",
     "bootstrap": "^5.3.0-alpha1",
     "bootstrap-icons": "^1.10.3",
+    "masonry-layout": "^4.2.2",
     "ngx-editor": "^15.3.0",
+    "ngx-masonry": "^14.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

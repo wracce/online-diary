@@ -1,0 +1,67 @@
+<nav class="navbar mb-3">
+  <div class="container">
+    <div class="row flex-grow-1">
+      <div class="col-12">
+          <input
+            class="clear form-control w-75 mx-auto shadow-sm"
+            type="search"
+            placeholder="Поиск по заметкам"
+            aria-label="Search"
+            [(ngModel)]="notesPageService.search"
+            [class.bg-success-subtle] = "notesPageService.search !== ''"
+
+          />
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <ngx-masonry #masonry2 [options]="masonryOptions">
+    <div class="grid-sizer"></div>
+    <div
+      ngxMasonryItem
+      class="grid-item shadow rounded"
+      *ngFor="let note of notesPageService.markedNotes | filterNotes : notesPageService.search"
+    >
+      <app-note-card
+        class="note-card"
+        [header]="note.header"
+        [created]="note.created"
+        [marked]="note.marked"
+        [color]="note.color"
+        [id]="note.id!"
+        ><div class="note-card-content" [innerHTML]="note.content! | sanitizeHtml"></div
+      ></app-note-card>
+    </div>
+  </ngx-masonry>
+
+  <hr class="border-2">
+
+
+  <ngx-masonry #masonry1 [options]="masonryOptions">
+    <div class="grid-sizer"></div>
+    <div
+      ngxMasonryItem
+      class="grid-item shadow rounded"
+      *ngFor="let note of notesPageService.unmarkedNotes | filterNotes: notesPageService.search"
+    >
+      <app-note-card
+        class="note-card"
+        [header]="note.header"
+        [created]="note.created"
+        [marked]="note.marked"
+        [color]="note.color"
+        [id]="note.id!"
+        ><div [innerHTML]="note.content! | sanitizeHtml"></div
+      ></app-note-card>
+    </div>
+  </ngx-masonry>
+</div>
+
+<button
+  class="btn btn-primary position-fixed bottom-0 end-0 m-4 rounded-5"
+  (click)="notesPageService.openNoteCardModal(null)"
+>
+  <i class="btn-add-note bi bi-file-earmark-plus-fill"></i>
+</button>

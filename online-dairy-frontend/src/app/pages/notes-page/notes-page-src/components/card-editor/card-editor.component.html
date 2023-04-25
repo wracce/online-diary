@@ -1,0 +1,11 @@
+<form class="editor-wrapper" [formGroup]="contentForm">
+  <div class="overflow-auto">
+    <ngx-editor
+      class="editor"
+      [editor]="editor"
+      placeholder="Текст..."
+      formControlName="content"
+    ></ngx-editor>
+  </div>
+  <ngx-editor-menu class="editor-menu" [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+</form>
